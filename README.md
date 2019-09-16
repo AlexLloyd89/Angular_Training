@@ -1,1 +1,1 @@
-angular training
+angular training for OB
