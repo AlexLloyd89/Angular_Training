@@ -1,9 +1,25 @@
 <div class="container">
   <h2>User Settings</h2>
-  <form>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <div class="form-group">
       <label for="name">Name</label>
-      <input id="name" name="name" class="form-control" />
+      <input
+        id="name"
+        name="name"
+        class="form-control"
+        [(ngModel)]="userSettings.name"
+        (blur)="onBlur(nameField)"
+        required
+        #nameField="ngModel"
+        [class.field-error]="form.submitted && nameField.invalid"
+      />
+
+      <div
+        [hidden]="nameField.valid || !form.submitted"
+        class="alert alert-danger"
+      >
+        Enter a name
+      </div>
     </div>
 
     <div class="form-check form-group">
@@ -12,6 +28,7 @@
         class="form-check-input"
         id="emailOffers"
         name="emailOffers"
+        [(ngModel)]="userSettings.emailOffers"
       />
       <label for="emailOffers" class="form-check-label"
         >Email Special Offers</label
@@ -28,6 +45,7 @@
           id="lightinterface"
           value="light"
           checked
+          [(ngModel)]="userSettings.interfaceStyle"
         />
         <label for="lightinterface" class="form-check-label">Light</label>
       </div>
@@ -39,6 +57,7 @@
           id="mediuminterface"
           value="medium"
           checked
+          [(ngModel)]="userSettings.interfaceStyle"
         />
         <label for="mediuminterface" class="form-check-label">Medium</label>
       </div>
@@ -50,6 +69,7 @@
           id="darkinterface"
           value="dark"
           checked
+          [(ngModel)]="userSettings.interfaceStyle"
         />
         <label for="darkinterface" class="form-check-label">Dark</label>
       </div>
@@ -57,7 +77,12 @@
 
     <div class="form-group">
       <label for="subscriptionType">Subscription Type</label>
-      <select id="subscriptionType" class="form-control">
+      <select
+        class="form-control"
+        id="subscriptionType"
+        name="subscriptionType"
+        [(ngModel)]="userSettings.subscriptionType"
+      >
         <option>Montly</option>
         <option>Annual</option>
         <option>Lifetime</option>
@@ -71,9 +96,12 @@
         class="form-control"
         id="notes"
         rows="3"
+        [(ngModel)]="userSettings.notes"
       ></textarea>
     </div>
 
     <button class="btn btn-primary">Send</button>
   </form>
 </div>
+
+{{ form.value | json }}
