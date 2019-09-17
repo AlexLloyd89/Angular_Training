@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { ToastrService } from "src/app/common/toastr.service";
 import { ActivatedRoute } from "@angular/router";
+import { IEvent } from "src/app/shared/event.model";
 
 @Component({
   selector: "events-list",
@@ -8,7 +9,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./events-list.component.scss"]
 })
 export class EventsListComponent {
-  events: any;
+  events: IEvent[];
 
   constructor(private toastr: ToastrService, private route: ActivatedRoute) {}
 
