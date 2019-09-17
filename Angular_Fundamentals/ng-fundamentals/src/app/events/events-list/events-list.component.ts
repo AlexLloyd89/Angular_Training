@@ -4,7 +4,7 @@ import { TestService } from '../../services/test.service';
 
 @Component({
   selector: "events-list",
-  template: './events-list.component.html',
+  templateUrl: './events-list.component.html',
   styleUrls: ['./events-list.component.scss']
 })
 export class EventsListComponent {
