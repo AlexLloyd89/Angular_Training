@@ -7,7 +7,8 @@ import {
   EventService,
   EventDetailsComponent,
   EventRouteActivator,
-  EventListResolver
+  EventListResolver,
+  CreateSessionComponent
 } from "./events/index";
 import { AppComponent } from "./app.component";
 import { NavBarComponent } from "./nav/navbar.component";
@@ -26,7 +27,8 @@ import { AuthService } from "./user/auth.service";
     EventDetailsComponent,
     NavBarComponent,
     Error404Component,
-    CreateEventComponent
+    CreateEventComponent,
+    CreateSessionComponent
   ],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
   exports: [EventsListComponent],
