@@ -7,8 +7,9 @@
     (ngSubmit)="saveSession(newSessionForm.value)"
     autocomplete="off"
   >
-    <div class="form-group">
+    <div class="form-group" [ngClass]="{ error: name.invalid && name.dirty }">
       <label for="sessionName">Session Name:</label>
+      <em *ngIf="name.invalid && name.dirty">Required</em>
       <input
         formControlName="name"
         id="sessionName"
@@ -56,7 +57,13 @@
         placeholder="abstract..."
       ></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button
+      [disabled]="newSessionForm.invalid"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Save
+    </button>
     <button type="button" class="btn btn-default">Cancel</button>
   </form>
 </div>
