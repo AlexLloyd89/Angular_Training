@@ -9,7 +9,8 @@ import {
   EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
-  SessionListComponent
+  SessionListComponent,
+  DurationPipe
 } from "./events/index";
 import { AppComponent } from "./app.component";
 import { NavBarComponent } from "./nav/navbar.component";
@@ -33,7 +34,8 @@ import { CollapsibleWellComponent } from "./common/collapsible-well.component";
     CreateEventComponent,
     CreateSessionComponent,
     SessionListComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,
