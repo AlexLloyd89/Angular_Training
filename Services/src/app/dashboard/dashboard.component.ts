@@ -1,23 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 import { Book } from "app/models/book";
-import { allBooks, allReaders } from 'app/data';
+
 import { Reader } from "app/models/reader";
+import { LoggerService } from "app/services/logger.service";
+import { DataService } from "app/services/data.service";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
+  selector: "app-dashboard",
+  templateUrl: "./dashboard.component.html",
   styles: []
 })
 export class DashboardComponent implements OnInit {
+  allBooks: Book[];
+  allReaders: Reader[];
+  mostPopularBook: Book;
 
-  allBooks: Book[] = allBooks;
-  allReaders: Reader[] = allReaders;
-  mostPopularBook: Book = allBooks[0];
-
-  constructor() { }
+  constructor(
+    private loggerService: LoggerService,
+    private dataService: DataService
+  ) {}
 
   ngOnInit() {
+    this.allBooks = this.dataService.getAllBooks();
+    this.allReaders = this.dataService.getAllReaders();
+    this.mostPopularBook = this.dataService.mostPopularBook;
   }
 
   deleteBook(bookID: number): void {
@@ -27,5 +34,4 @@ export class DashboardComponent implements OnInit {
   deleteReader(readerID: number): void {
     console.warn(`Delete reader not yet implemented (readerID: ${readerID}).`);
   }
-
 }
